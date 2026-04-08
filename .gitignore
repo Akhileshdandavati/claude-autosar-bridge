@@ -1,0 +1,29 @@
+# Environment
+.env
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Generated outputs
+output/
+*.arxml
+*.slx
+*.slxc
+slprj/
+
+# MATLAB
+*.asv
+*.m~
+matlab.engine.*.log
+
+# IDE
+.vscode/settings.json
+.idea/
+*.suo
+
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store
