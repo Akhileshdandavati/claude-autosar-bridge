@@ -8,7 +8,6 @@ __pycache__/
 
 # Generated outputs
 output/
-*.arxml
 *.slx
 *.slxc
 slprj/
@@ -27,3 +26,11 @@ matlab.engine.*.log
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# Debug/temp files
+fix.py
+check.py
+test.arxml
+
+# PowerShell runner (replaced by run.bat)
+run.ps1

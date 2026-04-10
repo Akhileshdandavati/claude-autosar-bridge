@@ -25,6 +25,8 @@ Usage:
 """
 
 import logging
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning, module="xmlschema")
 from pathlib import Path
 
 import xmlschema
@@ -56,7 +58,7 @@ def _find_schema_path() -> Path:
 
     # Fallback — user can set this manually
     fallback = Path(__file__).parent.parent / "schemas" / "AUTOSAR_00051.xsd"
-    logger.warning("Falling back to manual schema path: %s", fallback)
+    logger.debug("Falling back to manual schema path: %s", fallback)
     return fallback
 
 

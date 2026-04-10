@@ -1,0 +1,64 @@
+{
+  "swc_name": "CanGateway",
+  "category": "APPLICATION",
+  "ports": [
+    {
+      "name": "EngineSpeedIn",
+      "direction": "R",
+      "interface_name": "EngineSpeedInterface",
+      "data_element": "EngineSpeed",
+      "data_type": "uint16"
+    },
+    {
+      "name": "ThrottleIn",
+      "direction": "R",
+      "interface_name": "ThrottleInterface",
+      "data_element": "ThrottlePosition",
+      "data_type": "uint8"
+    },
+    {
+      "name": "EngineSpeedOut",
+      "direction": "P",
+      "interface_name": "EngineSpeedOutInterface",
+      "data_element": "EngineSpeedFwd",
+      "data_type": "uint16"
+    },
+    {
+      "name": "ThrottleOut",
+      "direction": "P",
+      "interface_name": "ThrottleOutInterface",
+      "data_element": "ThrottlePositionFwd",
+      "data_type": "uint8"
+    }
+  ],
+  "runnables": [
+    {
+      "name": "Run1ms",
+      "period_ms": 1,
+      "accesses": [
+        {
+          "port": "EngineSpeedIn",
+          "mode": "read"
+        },
+        {
+          "port": "ThrottleIn",
+          "mode": "read"
+        },
+        {
+          "port": "EngineSpeedOut",
+          "mode": "write"
+        },
+        {
+          "port": "ThrottleOut",
+          "mode": "write"
+        }
+      ]
+    },
+    {
+      "name": "InitCanGateway",
+      "period_ms": -1,
+      "accesses": []
+    }
+  ],
+  "init_runnable": "InitCanGateway"
+}

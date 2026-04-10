@@ -1,4 +1,4 @@
-"""
+r"""
 arxml_generator.py
 ------------------
 FOLDER : D:\Auto\claude-autosar-integration\src\
@@ -187,11 +187,12 @@ class ARXMLGenerator:
         iface_node = af.get_node(f"/Interfaces/{port.interface_name}")
         if port.direction == "P":
             p = swc.new_PPortPrototype(port.name)
+            p.set_providedInterface(iface_node)
             logger.debug("    P-Port: %s", port.name)
         else:
             p = swc.new_RPortPrototype(port.name)
+            p.set_requiredInterface(iface_node)
             logger.debug("    R-Port: %s", port.name)
-        p.set_requiredInterface(iface_node)
 
     # ── Runnable helpers ──────────────────────────────────────────────
     def _add_runnable(self, ib, runnable: RunnableSpec, swc):
@@ -324,7 +325,7 @@ if __name__ == "__main__":
         "init_runnable": "InitSpeedSensor",
     })
 
-    out = Path("output") / "test_speed_sensor"
+    out = Path("output") / "CanGateway"
     gen = ARXMLGenerator(test_spec, out)
 
     try:

@@ -1,0 +1,31 @@
+{
+  "swc_name": "SpeedSensor",
+  "category": "APPLICATION",
+  "ports": [
+    {
+      "name": "SpeedPort",
+      "direction": "R",
+      "interface_name": "SpeedSensorInterface",
+      "data_element": "VehicleSpeed",
+      "data_type": "uint16"
+    }
+  ],
+  "runnables": [
+    {
+      "name": "Run10ms",
+      "period_ms": 10,
+      "accesses": [
+        {
+          "port": "SpeedPort",
+          "mode": "read"
+        }
+      ]
+    },
+    {
+      "name": "InitSpeedSensor",
+      "period_ms": -1,
+      "accesses": []
+    }
+  ],
+  "init_runnable": "InitSpeedSensor"
+}

@@ -1,0 +1,31 @@
+{
+  "swc_name": "BrakeActuator",
+  "category": "APPLICATION",
+  "ports": [
+    {
+      "name": "BrakeCommandPort",
+      "direction": "P",
+      "interface_name": "BrakeCommandInterface",
+      "data_element": "BrakeTorque",
+      "data_type": "float32"
+    }
+  ],
+  "runnables": [
+    {
+      "name": "Run5ms",
+      "period_ms": 5,
+      "accesses": [
+        {
+          "port": "BrakeCommandPort",
+          "mode": "write"
+        }
+      ]
+    },
+    {
+      "name": "InitBrakeActuator",
+      "period_ms": -1,
+      "accesses": []
+    }
+  ],
+  "init_runnable": "InitBrakeActuator"
+}
