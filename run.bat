@@ -9,7 +9,7 @@
 
 call .venv\Scripts\activate
 
-if "%~1"=="test" (
+if "%~1"=="dbc" (`n    python run_dbc.py %2 %3 %4 %5 %6`n) else if "%~1"=="test" (
     echo [Running pipeline test - no API credits needed]
     python -m src.orchestrator --test
 

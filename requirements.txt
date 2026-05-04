@@ -22,3 +22,5 @@ ruff>=0.4.0
 # HTTP
 httpx>=0.27.0
 tenacity>=8.3.0
+
+cantools>=4.0.0

@@ -185,13 +185,13 @@ void SpeedSensor_InitSpeedSensor(void)
 claude-autosar-bridge/
 |-- src/
 |   |-- orchestrator.py        # Main pipeline CLI
-|   |-- claude_client.py       # Layer 1: Claude API
-|   |-- prompt_templates.py    # Layer 1: System prompt + few-shot examples
-|   |-- models.py              # Layer 1: Pydantic SWCSpec
-|   |-- arxml_generator.py     # Layer 2: ARXML generator
-|   |-- schema_validator.py    # Layer 2: XSD validation
-|   |-- c_code_generator.py    # Layer 3: C code generator
-|   +-- feedback_loop.py       # Layer 4: Self-correction loop
+|   |-- claude_client.py       # Claude API
+|   |-- prompt_templates.py    # System prompt + few-shot examples
+|   |-- models.py              # Pydantic SWCSpec
+|   |-- arxml_generator.py     # ARXML generator
+|   |-- schema_validator.py    # XSD validation
+|   |-- c_code_generator.py    # C code generator
+|   +-- feedback_loop.py       # Self-correction loop
 |-- schemas/
 |   +-- AUTOSAR_00051.xsd      # AUTOSAR R22-11 schema for validation
 |-- examples/

@@ -93,6 +93,21 @@ class ClaudeClient:
         self.client = anthropic.Anthropic(api_key=key)
         logger.info("ClaudeClient initialised (model=%s)", MODEL)
 
+    def _validate_prompt(self, prompt: str):
+        """Reject prompts that are clearly not AUTOSAR SWC descriptions."""
+        prompt_lower = prompt.lower()
+        # Must contain at least one AUTOSAR-related keyword
+        autosar_keywords = [
+            "swc", "component", "port", "runnable", "autosar",
+            "sensor", "actuator", "gateway", "controller", "monitor",
+            "uint", "sint", "float", "periodic", "ecu", "can", "signal"
+        ]
+        if not any(kw in prompt_lower for kw in autosar_keywords):
+            raise ValueError(
+                f"Prompt does not appear to describe an AUTOSAR SWC.\n"
+                f"Example: \"Create a SpeedSensor SWC with R-port for vehicle speed uint16 and 10ms runnable\""
+            )
+
     def send_prompt(self, user_prompt: str) -> SWCSpec:
         """
         Send a natural language SWC description to Claude.
@@ -109,6 +124,7 @@ class ClaudeClient:
             ClaudeAuthError   — API key invalid
             anthropic.RateLimitError — after all retries exhausted
         """
+        self._validate_prompt(user_prompt)
         logger.info("Sending prompt: %s", user_prompt[:80])
         raw = self._call_api(user_prompt)
         data = self._parse_json(raw)
